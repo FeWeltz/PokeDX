@@ -1,0 +1,27 @@
+<template>
+  <div class="slds-align_absolute-center ">
+  
+    <lightning-card  >
+      <div class="poke-card-title">{pokemon.Name}</div>
+      <div class="slds-var-p-horizontal_small">
+        
+          <div class="slds-media__figure" onclick={handleViewPokeId}>
+            <img
+              src={pokemon.Imagen__c}
+              alt="pokemon profile"
+              class="slds-var-m-around_medium window"
+            />
+          </div>
+        
+          <div class="slds-media__body">
+            <p class="slds-var-m-bottom_xx-small">N° {pokemon.ExtId__c}</p>
+            <p class="slds-var-m-bottom_xx-small">Tipo: {pokemon.Tipos__c}</p>
+            <p class="slds-var-m-bottom_xx-small">Altura: {pokemon.Altura__c} ft</p>
+            <p class="slds-var-m-bottom_xx-small">Peso: {pokemon.Peso__c} lb</p>
+            <p class="slds-var-m-bottom_xx-small">Generacion: {pokemon.Generacion__c}</p>
+          </div>
+        
+      </div>
+    </lightning-card>
+  </div>
+  </template>

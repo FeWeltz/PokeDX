@@ -1,0 +1,87 @@
+<template>
+  <div class="Inner-Body">
+        <template if:true={pokemons.data}>
+          <div class="slds-align_absolute-center ">
+            <lightning-card class="slds-card__body_inner">  
+                  <div class="contador">Encontrados: {pokemons.data.length}</div>
+                  <div>
+                    <lightning-input
+                      type="search"
+                      onchange={handleInputSearch}
+                      variant="label-hidden"
+                      class="slds-var-m-bottom_small search-and-filter"
+                      label="Search"
+                      placeholder="Encuentra tu Pokemon"
+                      value={searchTerm}
+                    >
+                    </lightning-input>
+                  </div>
+                  <div class="slds-grid slds-gutters">
+                  <div class="slds-col">
+                    <div class="gen">Generacion</div>
+                      <div>
+                          <lightning-combobox
+                            name="generacion"
+                            value={generacion}
+                            placeholder="Seleccione generacion"
+                            options={generaciones}
+                            onchange={handleFilterGen}
+                            class="search-and-filter"
+                          >
+                          </lightning-combobox>
+                        </div>
+                  </div>
+                    <div class="slds-col">
+                      <div class="type">Tipos</div>
+                        <div>
+                            <lightning-combobox
+                              name="tipo"
+                              value={tipo}
+                              placeholder="Seleccione tipo"
+                              options={tipos}
+                              onchange={handleFilterType}
+                              class="search-and-filter"
+                            >
+                            </lightning-combobox>
+                          </div>
+                    </div>
+                </div> 
+            </lightning-card>
+          </div>
+          
+          <lightning-layout multiple-rows="true" pull-to-boundary="small">
+            <template
+              for:each={pokemons.data}
+              for:item="pokemon"
+              class="slds-grid slds-gutters"
+            >
+              <lightning-layout-item
+                key={pokemon.PokeIndex__c}
+                size="2"
+                class="slds-var-p-around_x-small cards-poke"
+              >
+                <c-poke-card
+                  pokemon={pokemon}
+                  onpokemonview={handlePokeDetail}
+                ></c-poke-card>
+              </lightning-layout-item>
+            </template>
+          </lightning-layout>
+  
+          <!-- No encuentra pokemons -->
+          <template if:false={hasResults}>
+            <div
+              class="slds-align_absolute-center slds-var-m-vertical_small texto_error"
+            >
+              We did not find results...
+            </div>
+          </template>
+        </template>
+  
+        <template if:true={pokemons.error}>
+          <div class="slds-text-color_error">
+            An error occurred while loading the bear list {pokemons.error}
+          </div>
+        </template>
+      </div>
+  </template>

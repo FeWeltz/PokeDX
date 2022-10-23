@@ -1,0 +1,19 @@
+.slds-var-m-bottom_xx-small{
+    color: rgb(39, 38, 119);
+    font-weight:bold ;
+    font-size: small;
+}
+.poke-card-title{
+    color:rgb(145, 10, 10);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    text-align: center;
+}
+:host {
+    --slds-c-card-color-background:#65d3b77c;
+}
+.window:hover{
+    transform: scale(1.8);
+    transition: .3s ease;
+}
